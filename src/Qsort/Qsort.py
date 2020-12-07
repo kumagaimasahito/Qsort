@@ -3,7 +3,7 @@ import random
 class Qsort:
     def __init__(self, numbers=None):
         if numbers != None:
-            self.set_numbers(numbers):
+            self.set_numbers(numbers)
 
     def set_random_numbers(self, num_numbers=4, min_rand=1, max_rand=100):
         self.numbers = [random.randint(min_rand, max_rand) for _ in range(num_numbers)]
