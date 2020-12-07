@@ -144,15 +144,19 @@ class Qsort:
         return self.sorted_numbers
 
     def SASolver(self, num_reads=100):
+        self.set_qubo()
         sampler = SimulatedAnnealingSampler()
         self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
         self.get_solutions(self.response)
         self.select_solutions()
+        self.solutions2labels(self.selected_sols)
         return self.get_sorted_numbers()
 
     def QASolver(self, token, solver, endpoint, num_reads=100):
+        self.set_qubo()
         sampler = DWaveSampler(token=token, solver=solver, endpoint=endpoint)
         self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
         self.get_solutions(self.response)
         self.select_solutions()
+        self.solutions2labels(self.selected_sols)
         return self.get_sorted_numbers()
