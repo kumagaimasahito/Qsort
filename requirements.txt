@@ -1,1 +1,1 @@
-openjij
+dwave-ocean-sdk
