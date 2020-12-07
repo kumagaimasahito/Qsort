@@ -74,3 +74,48 @@ class Qsort:
 
     def __set_lam(self):
         self.__lam = self.max_numbers/2
+
+    def get_lam(self):
+        return self.__lam
+
+    def solutions2labels(self, solutions):
+        self.results = []
+        for sol in solutions:
+            result = [0] * self.num_numbers
+            if self.check_violation(sol):
+                for ind_val, row in enumerate(self.__solution_matrix):
+                    result[row.index(1)] = self.numbers[ind_val]
+                self.results.append(result)
+            else:
+                continue
+            
+        return self.results
+            
+    def check_violation(self, solution):
+        num_inc = self.num_numbers
+        self.__solution_matrix = []
+        num_violation = 0
+
+        # solutionを行列に変形
+        for num in range(self.num_numbers):
+            self.__solution_matrix.append(solution[num:num_inc])
+            num_inc += self.num_numbers
+        
+        # columnsに1が1個ずつかどうか
+        for ind_col in range(self.num_numbers):
+            tmp = 0
+            for ind_row in range(self.num_numbers):
+                tmp += self.__solution_matrix[ind_row][ind_col]
+            if not tmp == 1:
+                num_violation += 1
+
+        # rowsに1が1個ずつかどうか
+        for row in self.__solution_matrix:
+            if not sum(row) == 1:
+                num_violation += 1
+
+        if not num_violation == 0:
+            print(solution, "に制約違反が，", num_violation, "個見つかりました．")
+            return False
+        else:
+            return True
