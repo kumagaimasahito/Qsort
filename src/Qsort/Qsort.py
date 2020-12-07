@@ -134,3 +134,8 @@ class Qsort:
             if not sol in self.selected_sols:
                 self.selected_sols.append(sol)
         return self.selected_sols
+
+    def get_sorted_numbers(self):
+        first_numbers = [num[0] for num in self.results]
+        self.sorted_numbers = self.results[first_numbers.index(max(first_numbers))]
+        return self.sorted_numbers
