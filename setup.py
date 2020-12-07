@@ -11,9 +11,9 @@ def _requires_from_file(filename):
 setup(
     name="Qsort",
     version="0.1.0",
-    license="MIT License"
-    discription="The sorting algorithm uaing quantum annealing",
-    author="Masahito Kumagai"
+    license="MIT License",
+    description="The sorting algorithm uaing quantum annealing",
+    author="Masahito Kumagai",
     url="https://github.com/kumagaimasahito/Qsort",
     packages=find_packages("src"),
     package_dir={"": "src"},
