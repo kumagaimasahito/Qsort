@@ -88,7 +88,6 @@ class Qsort:
                 self.results.append(result)
             else:
                 continue
-            
         return self.results
 
     def check_violation(self, solution):
@@ -119,3 +118,19 @@ class Qsort:
             return False
         else:
             return True
+
+    def get_solutions(self, response):
+        self.response = response
+        self.solutions = [
+            state.tolist() 
+            for i, state in enumerate(response.states) 
+            if response.energies[i] == min(response.energies)
+        ]
+        return self.solutions
+
+    def select_solutions(self):
+        self.selected_sols = []
+        for sol in self.solutions:
+            if not sol in self.selected_sols:
+                self.selected_sols.append(sol)
+        return self.selected_sols
