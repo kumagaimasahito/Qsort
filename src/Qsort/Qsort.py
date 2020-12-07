@@ -125,7 +125,7 @@ class Qsort:
         self.solutions = [
             state.tolist() 
             for i, state in enumerate(response.record['sample']) 
-            if response.record['energy'] == min(response.record['energy'])
+            if response.record['energy'][i] == min(response.record['energy'])
         ]
         return self.solutions
 
@@ -141,9 +141,11 @@ class Qsort:
         self.sorted_numbers = self.results[first_numbers.index(max(first_numbers))]
         return self.sorted_numbers
 
-    def SAsolver(self, num_reads=100):
+    def SASolver(self, num_reads=100):
         sampler = neal.SimulatedAnnealingSampler()
         self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
         self.get_solutions(self.response)
         self.select_solutions()
         return self.get_sorted_numbers()
+
+    def QASolver(self, )
