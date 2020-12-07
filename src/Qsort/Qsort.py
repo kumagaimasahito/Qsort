@@ -1,4 +1,5 @@
 import random
+import openjij as oj
 
 class Qsort:
     def __init__(self, numbers=None):
@@ -139,3 +140,10 @@ class Qsort:
         first_numbers = [num[0] for num in self.results]
         self.sorted_numbers = self.results[first_numbers.index(max(first_numbers))]
         return self.sorted_numbers
+
+    def SAsolver(self, num_reads=100):
+        sampler = oj.SASampler()
+        self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
+        self.get_solutions(self.response)
+        self.select_solutions()
+        return self.get_sorted_numbers()
