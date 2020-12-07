@@ -30,7 +30,7 @@ class Qsort:
         self.__set_diffs()
         self.__set_neighbors()
         self.__set_lam()
-        
+
         self.qubo = {
             ((v, i), (w, j)) : 
                 self.__diffs[(v, w)] if (i, j) in self.__neighbors and (v, w) in self.__diffs.keys() else
@@ -72,5 +72,5 @@ class Qsort:
             print(pair)
         return self.__neighbors
 
-    def __sel_lam(self):
+    def __set_lam(self):
         self.__lam = self.max_numbers/2
