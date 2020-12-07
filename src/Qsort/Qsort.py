@@ -1,5 +1,6 @@
 import random
-import neal
+from neal import SimulatedAnnealingSampler
+from dwave.system.samplers import DWaveSampler
 
 class Qsort:
     def __init__(self, numbers=None):
@@ -142,10 +143,15 @@ class Qsort:
         return self.sorted_numbers
 
     def SASolver(self, num_reads=100):
-        sampler = neal.SimulatedAnnealingSampler()
+        sampler = SimulatedAnnealingSampler()
         self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
         self.get_solutions(self.response)
         self.select_solutions()
         return self.get_sorted_numbers()
 
-    def QASolver(self, )
+    def QASolver(self, token, num_reads=100):
+        sampler = DWaveSampler(token=token)
+        self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
+        self.get_solutions(self.response)
+        self.select_solutions()
+        return self.get_sorted_numbers()
