@@ -90,7 +90,7 @@ class Qsort:
                 continue
             
         return self.results
-            
+
     def check_violation(self, solution):
         num_inc = self.num_numbers
         self.__solution_matrix = []
@@ -98,9 +98,9 @@ class Qsort:
 
         # solutionを行列に変形
         for num in range(self.num_numbers):
-            self.__solution_matrix.append(solution[num:num_inc])
+            self.__solution_matrix.append(solution[num*self.num_numbers:num_inc])
             num_inc += self.num_numbers
-        
+
         # columnsに1が1個ずつかどうか
         for ind_col in range(self.num_numbers):
             tmp = 0
