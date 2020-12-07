@@ -149,8 +149,8 @@ class Qsort:
         self.select_solutions()
         return self.get_sorted_numbers()
 
-    def QASolver(self, token, solver, num_reads=100):
-        sampler = DWaveSampler(token=token, solver=solver)
+    def QASolver(self, token, solver, endpoint, num_reads=100):
+        sampler = DWaveSampler(token=token, solver=solver, endpoint=endpoint)
         self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
         self.get_solutions(self.response)
         self.select_solutions()
