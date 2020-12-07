@@ -142,7 +142,7 @@ class Qsort:
         return self.sorted_numbers
 
     def SAsolver(self, num_reads=100):
-        sampler = neal.SASampler()
+        sampler = neal.SimulatedAnnealingSampler()
         self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
         self.get_solutions(self.response)
         self.select_solutions()
