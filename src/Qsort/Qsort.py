@@ -124,8 +124,8 @@ class Qsort:
         self.response = response
         self.solutions = [
             state.tolist() 
-            for i, state in enumerate(response.states) 
-            if response.energies[i] == min(response.energies)
+            for i, state in enumerate(response.record['sample']) 
+            if response.record['energy'] == min(response.record['energy'])
         ]
         return self.solutions
 
