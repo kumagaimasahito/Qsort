@@ -37,7 +37,7 @@ class Qsort:
             ((v, i), (w, j)) : 
                 self.__diffs[(v, w)] if (i, j) in self.__neighbors and (v, w) in self.__diffs.keys() else
                 -2 * self.__lam if v == w and i == j else
-                2 * self.__lam if v == w else
+                2 * self.__lam if v == w and i < j else
                 2 * self.__lam if i == j else
                 0
             for v in range(self.num_numbers)
@@ -45,6 +45,7 @@ class Qsort:
             for i in range(self.num_numbers)
             for j in range(self.num_numbers)
         }
+        self.qubo = {k : v for k, v in self.qubo.items() if not v == 0}
         return self.qubo
 
     def __set_diffs(self):
