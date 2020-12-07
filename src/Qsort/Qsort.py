@@ -29,6 +29,8 @@ class Qsort:
     def set_qubo(self):
         self.__set_diffs()
         self.__set_neighbors()
+        self.__set_lam()
+        
         self.qubo = {
             ((v, i), (w, j)) : 
                 self.__diffs[(v, w)] if (i, j) in self.__neighbors and (v, w) in self.__diffs.keys() else
