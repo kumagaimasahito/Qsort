@@ -1,6 +1,7 @@
 import random
 from neal import SimulatedAnnealingSampler
 from dwave.system.samplers import DWaveSampler
+from dwave.system.composites import EmbeddingComposite
 
 class Qsort:
     def __init__(self, numbers=None):
@@ -154,7 +155,7 @@ class Qsort:
 
     def QASolver(self, token, solver, endpoint, num_reads=100):
         self.set_qubo()
-        sampler = DWaveSampler(token=token, solver=solver, endpoint=endpoint)
+        sampler = EmbeddingComposite(DWaveSampler(token=token, solver=solver, endpoint=endpoint))
         self.response = sampler.sample_qubo(self.qubo, num_reads=num_reads)
         self.get_solutions(self.response)
         self.select_solutions()
